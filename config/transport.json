@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "ssh_host": "gourmet-staging",
+  "remote_base": "/home/gsadmin/gse-upload"
+}
