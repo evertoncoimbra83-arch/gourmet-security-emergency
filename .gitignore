@@ -1,0 +1,28 @@
+# Secrets and credentials
+*.secret
+*.env
+.env*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*
+secrets/
+
+# Runtime / incidents
+runtime/
+backups/
+incidents/*/raw/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Logs
+*.log
+
+# Node / Python local artifacts
+node_modules/
+__pycache__/
+*.pyc
