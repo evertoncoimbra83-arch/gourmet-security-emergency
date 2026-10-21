@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "staging": {
+    "site_env": "/home/gsadmin/secure-env/.env.staging",
+    "site_process": "gourmet-novo-staging",
+    "worker_process": "gourmet-worker-staging",
+    "containers": [
+      "gi_staging_http",
+      "gi_staging_http_03c_shadow",
+      "gi_staging_http_03c_f3b3b2_shadow"
+    ],
+    "tokens": {
+      "GI_ATTENTION_READ_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-staging/attention-read-token.secret",
+        "required_in_site_env": true
+      },
+      "GI_RECOMMENDATION_READ_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-staging/recommendation-read-token.secret",
+        "required_in_site_env": true
+      },
+      "GI_PROPOSAL_READ_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-staging/proposal-read-token.secret",
+        "required_in_site_env": true
+      },
+      "GI_SITE_PRE_PREPARE_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-staging/site-pre-prepare-token.secret",
+        "required_in_site_env": false
+      }
+    }
+  },
+  "production": {
+    "site_env": "/home/gsadmin/secure-env/.env.production",
+    "site_process": "gourmet-novo",
+    "worker_process": "gourmet-worker",
+    "containers": [
+      "gi_production_http"
+    ],
+    "tokens": {
+      "GI_ATTENTION_READ_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-production/attention-read-token.secret",
+        "required_in_site_env": true
+      },
+      "GI_RECOMMENDATION_READ_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-production/recommendation-read-token.secret",
+        "required_in_site_env": true
+      },
+      "GI_PROPOSAL_READ_TOKEN": {
+        "secret_file": "/home/gsadmin/secure-env/gourmet-intelligence-production/proposal-read-token.secret",
+        "required_in_site_env": true
+      }
+    }
+  }
+}
