@@ -86,6 +86,39 @@ def clean_dist():
     PACKAGE_ROOT.mkdir(parents=True)
 
 
+def copy_file(source: Path, destination: Path):
+    destination.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    if source.suffix.lower() == ".sh":
+        content = source.read_text(
+            encoding="utf-8",
+        )
+
+        content = content.replace(
+            "\r\n",
+            "\n",
+        ).replace(
+            "\r",
+            "\n",
+        )
+
+        destination.write_text(
+            content,
+            encoding="utf-8",
+            newline="\n",
+        )
+
+        return
+
+    shutil.copy2(
+        source,
+        destination,
+    )
+
+
 def copy_source():
     for item_name in INCLUDED_PATHS:
         source = ROOT / item_name
@@ -97,13 +130,15 @@ def copy_source():
             if forbidden(source):
                 continue
 
-            destination = PACKAGE_ROOT / item_name
-            destination.parent.mkdir(
-                parents=True,
-                exist_ok=True,
+            destination = (
+                PACKAGE_ROOT / item_name
             )
 
-            shutil.copy2(source, destination)
+            copy_file(
+                source,
+                destination,
+            )
+
             continue
 
         for source_file in source.rglob("*"):
@@ -113,19 +148,18 @@ def copy_source():
             if forbidden(source_file):
                 continue
 
-            relative = source_file.relative_to(ROOT)
-            destination = PACKAGE_ROOT / relative
-
-            destination.parent.mkdir(
-                parents=True,
-                exist_ok=True,
+            relative = source_file.relative_to(
+                ROOT
             )
 
-            shutil.copy2(
+            destination = (
+                PACKAGE_ROOT / relative
+            )
+
+            copy_file(
                 source_file,
                 destination,
             )
-
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
