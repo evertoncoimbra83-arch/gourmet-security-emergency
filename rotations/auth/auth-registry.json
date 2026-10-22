@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "staging": {
+    "site_env": "/home/gsadmin/secure-env/.env.staging",
+    "site_dir": "/var/www/gourmet-staging",
+    "site_process": "gourmet-novo-staging",
+    "worker_process": "gourmet-worker-staging",
+    "secrets": {
+      "SESSION_SECRET": {"required_in_site_env": true, "restart_site_api": true, "restart_worker": false, "database_touch": false, "expected_effect": "session_or_token_invalidation"},
+      "JWT_SECRET": {"required_in_site_env": true, "restart_site_api": true, "restart_worker": false, "database_touch": false, "expected_effect": "session_or_token_invalidation"},
+      "NEXTAUTH_SECRET": {"required_in_site_env": true, "restart_site_api": true, "restart_worker": false, "database_touch": false, "expected_effect": "session_or_token_invalidation"}
+    }
+  }
+}
