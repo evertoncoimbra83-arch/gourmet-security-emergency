@@ -1,0 +1,3 @@
+# Synthetic metadata fixture; never a deployed config.
+bind 127.0.0.1
+requirepass FAKE_requirepass_fixture

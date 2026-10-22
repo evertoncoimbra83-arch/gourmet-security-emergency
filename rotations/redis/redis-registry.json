@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "staging": {
+    "site_env": "/home/gsadmin/secure-env/.env.staging",
+    "site_dir": "/var/www/gourmet-staging",
+    "site_process": "gourmet-novo-staging",
+    "worker_process": "gourmet-worker-staging",
+    "expected_host": "127.0.0.1",
+    "expected_port": 6380,
+    "expected_process_user": "gsadmin",
+    "expected_pm2_process": "redis-staging",
+    "required_config_authority": "PM2_SCRIPT_ARGUMENT",
+    "redis_discovery_contract_version": 2,
+    "expected_config_candidates": [
+      "/home/gsadmin/secure-env/p1rk/redis-staging.conf"
+    ],
+    "legacy_config_candidates": [
+      "/home/gsadmin/redis-staging/redis-staging.conf"
+    ],
+    "secrets": {
+      "REDIS_PASSWORD": {"rotation_class": "COORDINATED_ROTATE"},
+      "REDIS_URL": {"rotation_class": "COORDINATED_ROTATE"}
+    }
+  }
+}

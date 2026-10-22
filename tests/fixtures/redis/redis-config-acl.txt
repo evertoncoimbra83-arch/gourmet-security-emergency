@@ -1,0 +1,3 @@
+# Synthetic metadata fixture; never a deployed config.
+user default off
+user FAKE_operator on >FAKE_acl_fixture ~* +@all
